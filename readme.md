@@ -1,70 +1,32 @@
-# System control data are stored in text format
+# Overlay grid watermarks
 
-[![Latest Stable Version](https://poser.pugx.org/visavi/flystring/v/stable)](https://packagist.org/packages/visavi/flystring)
-[![Total Downloads](https://poser.pugx.org/visavi/flystring/downloads)](https://packagist.org/packages/visavi/flystring)
-[![Latest Unstable Version](https://poser.pugx.org/visavi/flystring/v/unstable)](https://packagist.org/packages/visavi/flystring)
-[![License](https://poser.pugx.org/visavi/flystring/license)](https://packagist.org/packages/visavi/flystring)
+[![Latest Stable Version](https://poser.pugx.org/visavi/watermask/v/stable)](https://packagist.org/packages/visavi/watermask)
+[![Total Downloads](https://poser.pugx.org/visavi/watermask/downloads)](https://packagist.org/packages/visavi/watermask)
+[![Latest Unstable Version](https://poser.pugx.org/visavi/watermask/v/unstable)](https://packagist.org/packages/visavi/watermask)
+[![License](https://poser.pugx.org/visavi/watermask/license)](https://packagist.org/packages/visavi/watermask)
 
 Basic useful feature list:
 
- * Reading and retrieval of data in a text file
- * Adding and deleting rows
- * Shift, rotation, clear and moving strings
- * Verifying the existence and size of the output file
- * Suitable for working with CSV format
+ * It covers the entire image watermarks
+ * Image processing gif, jpeg, jpg, png formats
+ * Working with images from the relative and absolute paths
+ * Checking the existence of the file, including remote file
+ * Calculation of the aspect ratio of the watermark to the original image
+ * Ability to customize the automatic imposition through .htaccess
 
 ```php
-<?php
-// Pass the file name and separator (default |)
-$fly = new Visavi\FlyString('test.txt', '|');
+<FilesMatch ".(gif|jpg|jpeg|png)$">
 
-// Checks the existence of the line returns true or false
-$string = $fly->exists();
+  RewriteEngine on
+  RewriteRule .*  /example.php?image=%{REQUEST_URI} [NC]
 
-// Returns the number of lines in the file, if the file does not exist returns 0
-$string = $fly->count();
-
-// Adding lines to the file, if the file does not exist it will be created, line is added to the file
-$fly->insert(['hello', 'world', 'test', 555]);
-
-// Add a line to the beginning of the file
-$fly->insert([0, 'The line at the beginning of the', 'something'], false);
-
-// Reading the first line of the file, Default shows the last line in the file
-$string = $fly->read(0);
-
-// Search the data in cell number 2, it returns an array of the entire row and line number
-$string = $fly->search(2, 'test');
-
-// Change the value in the line number 8 and the cell number 2
-$fly->cell(8, 2, 'new value');
-
-// Writes a string number 5 new data
-$fly->update(5, ['hello', 'world', 'test', 555]);
-
-// Line breaks down the file number 3, if no number is transferred to a null string
-$fly->down(3);
-
-// Shift 7 line 1 position up, then there would be 7 line 6 and vice versa
-$fly->shift(7, -1);
-
-// Deleting rows from a file, instead of an array can be passed an integer
-$string = $fly->delete([1, 2]);
-
-// Rewrites the entire file when the file does not exist, create it
-$fly->write('new file');
-
-// Displays formatted file size, such as 543B, 1.43kB
-$fly->filesize();
-
-// Clears file
-$fly->clear();
+</FilesMatch>
 ```
 
 ### Installing
 
 ```
-composer require visavi/flystring
+composer require visavi/watermask
 ```
 
 ### License

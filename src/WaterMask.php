@@ -135,7 +135,7 @@ class Watermask {
 		for ($x = 0; $x < $width; $x+=$offset_x){
 			for ($y = 0, $s = 0; $s++, $y < $height; $y+=$offset_y){
 				$shift = $s%2  ? 0 : $offset_y;
-				imagecopy($img, $new_water, $x + $shift, $y, 0 , 0, $new_width, $new_height);
+				imagecopy($img, $new_water, $x + $shift, $y, 0, 0, $new_width, $new_height);
 			}
 		}
 	}
@@ -178,6 +178,3 @@ class Watermask {
 		}
 	}
 }
-
-$watermask = new Watermask($_GET['image'], '/include/watermark_new.png');
-$watermask->render();

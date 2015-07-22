@@ -1,0 +1,6 @@
+<FilesMatch ".(gif|jpg|jpeg|png)$">
+
+  RewriteEngine on
+  RewriteRule .*  /examples.php?image=%{REQUEST_URI} [NC]
+
+</FilesMatch>
