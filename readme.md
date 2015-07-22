@@ -23,6 +23,13 @@ Basic useful feature list:
 </FilesMatch>
 ```
 
+###Examples of implementation of requests
+```php
+http://site/examples.php?image=/image.jpg  // Processing relative path
+http://site/examples.php?image=http://site/image.jpg // Processing the absolute path
+http://site/image.jpg // Automatic processing through htaccess
+```
+
 ### Installing
 
 ```
