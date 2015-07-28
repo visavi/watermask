@@ -36,7 +36,7 @@ class Watermask {
 	public function exists()
 	{
 		if ($this->isLink($this->filename)) {
-			return get_headers(urldecode($this->filename));
+			return strpos(get_headers(urldecode($this->filename))[0], '200');
 		} else {
 			return is_file($this->filename) && file_exists($this->filename);
 		}
