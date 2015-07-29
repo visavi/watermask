@@ -30,8 +30,10 @@ http://site/examples.php?image=http://site/image.jpg // Processing the absolute 
 http://site/image.jpg // Automatic processing through htaccess
 ```
 
-### Installing
+###Result
+![Result](https://github.com/visavi/watermask/blob/master/result.jpg)
 
+### Installing
 ```
 composer require visavi/watermask
 ```
